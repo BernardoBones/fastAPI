@@ -46,7 +46,7 @@ def gosta_carro_cor(nome: str = None, marca: str = None, cor: str = None):
         print(e)
         return {"error": str(e)}
 
-@app.get('/marca_do_modelo/{modelo}', description='')
+@app.get('/marca_do_modelo/{modelo}', description='Buscar a marca do modelo informado')
 def marca_do_modelo(modelo: str):
     try:
         resultado = prolog.query(f'marca(Marca, {modelo}, Cor)')
@@ -55,7 +55,7 @@ def marca_do_modelo(modelo: str):
         print(e)
         return {"error": str(e)}
 
-@app.get('/modelos_marca/{marca}')
+@app.get('/modelos_marca/{marca}', description='Buscar modelos da marca informada')
 def modelos_marca(marca: str):
     try:
         resultado = prolog.query(f'marca({marca}, Modelo, Cor)')
@@ -64,7 +64,7 @@ def modelos_marca(marca: str):
         print(e)
         return {"error": str(e)}
 
-@app.get('/modelos_da_cor/{cor}', description='teste')
+@app.get('/modelos_da_cor/{cor}', description='Buscar modelos da cor informada')
 def modelos_da_cor(cor: str):
     try:
         resultado = prolog.query(f'marca(Marca, Modelo, {cor})')
